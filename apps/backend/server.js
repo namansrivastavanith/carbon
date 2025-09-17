@@ -2,12 +2,12 @@
 
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // It's good practice to keep this
+require('dotenv').config();
 
-// --- DATABASE CONNECTION IS DISABLED FOR TESTING ---
+// --- DATABASE CONNECTION IS DISABLED ---
 // const connectDB = require('./config/db');
 // connectDB();
-// ---------------------------------------------------
+// -------------------------------------
 
 const app = express();
 
@@ -15,14 +15,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// A simple test route to confirm connection
+// Your test API route
 app.get('/api/test', (req, res) => {
-  console.log("✅ /api/test route was hit successfully!"); // Add a log for confirmation
-  res.json({ message: 'Hello from the backend! 👋' });
+  res.json({ message: 'Backend is connected! 👋' });
 });
+
+// You can start adding more API routes here
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server is running for testing on port ${PORT}`);
+  console.log(`✅ Server is running on port ${PORT} (Database connection is OFF)`);
 });
